@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static tom.euler.Answers.PROBLEM_ONE;
 
 public class ProblemOneTest {
 
@@ -17,7 +18,7 @@ public class ProblemOneTest {
 
     @Test
     public void solveProblemTest() {
-        final int expected = 233168;
+        final int expected = PROBLEM_ONE.getAnswer();
 
         int answer = ProblemOne.calculate(1000, 3, 5);
         assertEquals(answer, expected);
@@ -25,7 +26,7 @@ public class ProblemOneTest {
 
     @Test
     public void solveProblemUsingFunctionalTest() {
-        final int expected = 233168;
+        final int expected = PROBLEM_ONE.getAnswer();
 
         int answer = ProblemOne.calculateUsingFunctional(1000, 3, 5);
         assertEquals(answer, expected);
@@ -33,7 +34,7 @@ public class ProblemOneTest {
 
     @Test
     public void shouldNotAllowExtraMultiples() {
-        final int expected = 233168;
+        final int expected = PROBLEM_ONE.getAnswer();
 
         int answer = ProblemOne.calculate(1000, 3, 5, 4);
         assertNotEquals(answer, expected);
