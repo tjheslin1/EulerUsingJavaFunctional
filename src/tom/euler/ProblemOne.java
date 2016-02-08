@@ -3,24 +3,14 @@ package tom.euler;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
+import static java.util.Arrays.stream;
+
 public class ProblemOne {
 
     private ProblemOne() {
     }
 
-    public static int example(int max, int... multiples) {
-        return sumOfMultiplesUpToMax(max, multiples);
-    }
-
-    public static int calculate(int max, int... multiples) {
-        return sumOfMultiplesUpToMax(max, multiples);
-    }
-
-    public static int calculateUsingFunctional(int max, int multiple1, int multiple2) {
-        return sumOfMultiplesUpToMaxUsingFunctional(max, multiple1, multiple2);
-    }
-
-    private static int sumOfMultiplesUpToMax(int max, int... multiples) {
+    public static int sumOfMultiplesUpToMax(int max, int... multiples) {
         int sum = 0;
         for (int i = 0; i < max; i++) {
             if (valueIsAMultiple(i, multiples)) {
@@ -31,8 +21,12 @@ public class ProblemOne {
         return sum;
     }
 
-    private static int sumOfMultiplesUpToMaxUsingFunctional(int max, int multiple1, int multiple2) {
-        Function<Integer, Integer> answer = i -> (IntStream.range(1, i)).filter(n -> valueIsAMultiple(n, multiple1, multiple2)).sum();
+    public static int calculateUsingFunctional(int max, int... multiples) {
+        return sumOfMultiplesUpToMaxUsingFunctional(max, multiples);
+    }
+
+    private static int sumOfMultiplesUpToMaxUsingFunctional(int max, int... multiples) {
+        Function<Integer, Integer> answer = i -> (IntStream.range(1, i)).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
         return answer.apply(max);
     }
 
@@ -44,5 +38,9 @@ public class ProblemOne {
         }
 
         return false;
+    }
+
+    private static boolean valueIsAMultipleFunctional(int value, int... multiples) {
+        return stream(multiples).anyMatch(multiple -> value % multiple == 0);
     }
 }

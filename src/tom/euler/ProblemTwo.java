@@ -19,12 +19,12 @@ public class ProblemTwo {
     }
 
     public static int calculate() {
-        int firstFibonacciNumber = 2, secondFibonacciNumber = 1;
+        int firstFibonacciNumber = 1, secondFibonacciNumber = 2;
         IntReference sum = new IntReference(0);
 
-        initialiseSum(sum, firstFibonacciNumber, secondFibonacciNumber);
+        initialiseSum(sum, secondFibonacciNumber, firstFibonacciNumber);
 
-        iterateFibonacciSequenceUpTo(FOUR_MILLION, secondFibonacciNumber, firstFibonacciNumber, sum);
+        iterateFibonacciSequenceUpTo(FOUR_MILLION, firstFibonacciNumber, secondFibonacciNumber, sum);
         return sum.integer;
     }
 
