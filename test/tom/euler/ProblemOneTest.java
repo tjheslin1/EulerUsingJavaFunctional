@@ -11,7 +11,7 @@ public class ProblemOneTest {
     public void exampleTest() {
         final int expected = 23;
 
-        int exampleAnswer = ProblemOne.sumOfMultiplesUpToMax(10, 3, 5);
+        int exampleAnswer = ProblemOne.sumOfMultiplesUpToMax(9, 3, 5);
         assertEquals(exampleAnswer, expected);
     }
 
@@ -19,7 +19,7 @@ public class ProblemOneTest {
     public void solveProblemTest() {
         final int expected = PROBLEM_ONE.getAnswer();
 
-        int answer = ProblemOne.sumOfMultiplesUpToMax(1000, 3, 5);
+        int answer = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5);
         assertEquals(answer, expected);
     }
 
@@ -27,7 +27,7 @@ public class ProblemOneTest {
     public void solveProblemUsingFunctionalTest() {
         final int expected = PROBLEM_ONE.getAnswer();
 
-        int answer = ProblemOne.calculateUsingFunctional(1000, 3, 5);
+        int answer = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(999, 3, 5);
         assertEquals(answer, expected);
     }
 
@@ -35,7 +35,15 @@ public class ProblemOneTest {
     public void shouldSolveDifferentSetOfMultiplesTest() {
         final int expected = 299496;
 
-        int answer = ProblemOne.sumOfMultiplesUpToMax(1000, 3, 5, 4);
+        int answer = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5, 4);
+        assertEquals(answer, expected);
+    }
+
+    @Test
+    public void shouldSumToZeroWhenMaxIsOneAndMultipleIsGreaterThanOne() {
+        final int expected = 1;
+
+        int answer = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(1, 1);
         assertEquals(answer, expected);
     }
 }

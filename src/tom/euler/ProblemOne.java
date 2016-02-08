@@ -12,7 +12,7 @@ public class ProblemOne {
 
     public static int sumOfMultiplesUpToMax(int max, int... multiples) {
         int sum = 0;
-        for (int i = 0; i < max; i++) {
+        for (int i = 1; i <= max; i++) {
             if (valueIsAMultiple(i, multiples)) {
                 sum += i;
             }
@@ -21,12 +21,8 @@ public class ProblemOne {
         return sum;
     }
 
-    public static int calculateUsingFunctional(int max, int... multiples) {
-        return sumOfMultiplesUpToMaxUsingFunctional(max, multiples);
-    }
-
-    private static int sumOfMultiplesUpToMaxUsingFunctional(int max, int... multiples) {
-        Function<Integer, Integer> answer = i -> (IntStream.range(1, i)).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
+    public static int sumOfMultiplesUpToMaxUsingFunctional(int max, int... multiples) {
+        Function<Integer, Integer> answer = i -> (IntStream.range(1, i+1)).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
         return answer.apply(max);
     }
 
