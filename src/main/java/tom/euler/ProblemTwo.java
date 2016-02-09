@@ -8,8 +8,6 @@ import static java.util.Arrays.asList;
 
 public class ProblemTwo {
 
-    private static final int FOUR_MILLION = 4_000_000;
-
     private ProblemTwo() {
     }
 
@@ -18,18 +16,20 @@ public class ProblemTwo {
         return sumOfValues(fibToTen);
     }
 
-    public static int calculate() {
-        int firstFibonacciNumber = 1, secondFibonacciNumber = 2;
+    public static int sumOfEvenFibonacciValues(int max, int firstFibonacciNumber, int secondFibonacciNumber) {
         IntReference sum = new IntReference(0);
 
         initialiseSum(sum, secondFibonacciNumber, firstFibonacciNumber);
+        iterateFibonacciSequenceUpTo(max, firstFibonacciNumber, secondFibonacciNumber, sum);
 
-        iterateFibonacciSequenceUpTo(FOUR_MILLION, firstFibonacciNumber, secondFibonacciNumber, sum);
         return sum.integer;
     }
 
-    public static int calculateUsingFunctional() {
-        // TODO: implement functional approach
+    public static int sumOfEvenFibonacciValuesFunctional(int max, IntReference sum) {
+        // Function<Integer, Integer> answer =
+        // i -> (IntStream.range(1, i+1)).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
+
+//        Function<Integer, Integer> answer = i -> (IntStream.range(1, i+1)).filter(ProblemTwo::isEven).map(addToSum(sum, );)
         return -2;
     }
 

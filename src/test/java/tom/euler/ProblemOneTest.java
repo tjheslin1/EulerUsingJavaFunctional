@@ -8,7 +8,7 @@ import static tom.euler.Answers.PROBLEM_ONE;
 public class ProblemOneTest {
 
     @Test
-    public void exampleTest() {
+    public void example() {
         final int expected = 23;
 
         int exampleAnswer = ProblemOne.sumOfMultiplesUpToMax(9, 3, 5);
@@ -16,7 +16,7 @@ public class ProblemOneTest {
     }
 
     @Test
-    public void solveProblemTest() {
+    public void solveProblem() {
         final int expected = PROBLEM_ONE.getAnswer();
 
         int answer = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5);
@@ -24,7 +24,7 @@ public class ProblemOneTest {
     }
 
     @Test
-    public void solveProblemUsingFunctionalTest() {
+    public void solveProblemUsingFunctional() {
         final int expected = PROBLEM_ONE.getAnswer();
 
         int answer = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(999, 3, 5);
@@ -32,7 +32,7 @@ public class ProblemOneTest {
     }
 
     @Test
-    public void shouldSolveDifferentSetOfMultiplesTest() {
+    public void solveDifferentSetOfMultiples() {
         final int expected = 299496;
 
         int answer = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5, 4);
@@ -40,10 +40,18 @@ public class ProblemOneTest {
     }
 
     @Test
-    public void shouldSumToZeroWhenMaxIsOneAndMultipleIsGreaterThanOne() {
+    public void sumToZeroWhenMaxIsOneAndMultipleIsGreaterThanOne() {
         final int expected = 1;
 
         int answer = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(1, 1);
         assertEquals(answer, expected);
+    }
+
+    @Test
+    public void solveForDuplicateMultiples() {
+        int answer = ProblemOne.sumOfMultiplesUpToMax(12, 6, 9);
+        int answerWithDuplicate = ProblemOne.sumOfMultiplesUpToMax(12, 6, 6, 9);
+
+        assertEquals(answer, answerWithDuplicate);
     }
 }

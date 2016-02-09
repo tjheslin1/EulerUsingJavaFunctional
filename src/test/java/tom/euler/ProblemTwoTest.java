@@ -9,8 +9,10 @@ import static tom.euler.Answers.PROBLEM_TWO;
 
 public class ProblemTwoTest {
 
+    private static final int FOUR_MILLION = 4_000_000;
+
     @Test
-    public void exampleTest() {
+    public void example() {
         final int expected = 231;
 
         int exampleAnswer = ProblemTwo.example();
@@ -18,16 +20,24 @@ public class ProblemTwoTest {
     }
 
     @Test
-    public void solveProblemTest() {
+    public void solveProblem() {
         final int expected = PROBLEM_TWO.getAnswer();
-        int answer = ProblemTwo.calculate();
+        int answer = ProblemTwo.sumOfEvenFibonacciValues(FOUR_MILLION, 1, 2);
 
         assertEquals(answer, expected);
     }
 
-    @Ignore("solveProblemUsingFunctionalTest to be implemented")
+    @Ignore("solveProblemUsingFunctional to be implemented")
     @Test
-    public void solveProblemUsingFunctionalTest() {
+    public void solveProblemUsingFunctional() {
         fail();
+    }
+
+    @Test
+    public void notIteratePastMax() {
+        final int expected = 0;
+
+        int answer = ProblemTwo.sumOfEvenFibonacciValues(1, 3, 5);
+        assertEquals(expected, answer);
     }
 }
