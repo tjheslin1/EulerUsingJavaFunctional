@@ -2,6 +2,9 @@
 *.war
 *.ear
 *.iml
+*.ipr
+*.iws
 
 out/
+target/
 .idea/
