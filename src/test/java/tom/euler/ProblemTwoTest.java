@@ -34,7 +34,7 @@ public class ProblemTwoTest {
     }
 
     @Test
-    public void notIteratePastMax() {
+    public void notCalculateAboveMax() {
         final int expected = 0;
 
         int answer = ProblemTwo.sumOfEvenFibonacciValues(1, 3, 5);
