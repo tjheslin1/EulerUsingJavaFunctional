@@ -22,7 +22,7 @@ public class ProblemOne {
     }
 
     public static int sumOfMultiplesUpToMaxUsingFunctional(int max, int... multiples) {
-        Function<Integer, Integer> answer = i -> (IntStream.range(1, i+1)).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
+        Function<Integer, Integer> answer = maxValue -> (IntStream.range(1, inclusive(maxValue))).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
         return answer.apply(max);
     }
 
@@ -38,5 +38,9 @@ public class ProblemOne {
 
     private static boolean valueIsAMultipleFunctional(int value, int... multiples) {
         return stream(multiples).anyMatch(multiple -> value % multiple == 0);
+    }
+
+    private static int inclusive(int value) {
+        return value + 1;
     }
 }

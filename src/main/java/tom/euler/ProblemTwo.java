@@ -32,7 +32,12 @@ public class ProblemTwo {
     }
 
     public static int sumOfEvenFibonacciValuesFunctional(int max, int firstFibonacciNumber, int secondFibonacciNumber) {
-        return FibonacciGenerator.finiteStream(i -> (i <= max), firstFibonacciNumber, secondFibonacciNumber).filter(ProblemTwo::isEven).mapToInt(i -> i).sum();
+        int result = FibonacciGenerator.finiteStream(i -> (i <= max), firstFibonacciNumber, secondFibonacciNumber).filter(ProblemTwo::isEven).mapToInt(i -> i).sum();
+
+        result += isEven(firstFibonacciNumber) ? firstFibonacciNumber : 0;
+        result += isEven(secondFibonacciNumber) ? secondFibonacciNumber : 0;
+
+        return result;
     }
 
     private static int sumOfValues(List<Integer> sequence) {
@@ -80,8 +85,7 @@ public class ProblemTwo {
 
         private final Predicate<Integer> predicate;
 
-        private int firstFibonacciNumber;
-        private int secondFibonacciNumber;
+        private int firstFibonacciNumber, secondFibonacciNumber;
 
         protected FibonacciGenerator(Predicate<Integer> predicate, int firstFibonacciNumber, int secondFibonacciNumber) {
             this.predicate = predicate;
@@ -96,10 +100,10 @@ public class ProblemTwo {
 
         @Override
         public Integer next() {
-            int result = firstFibonacciNumber + secondFibonacciNumber;
+            int next = nextFibonacciNumber(firstFibonacciNumber, secondFibonacciNumber);
             firstFibonacciNumber = secondFibonacciNumber;
-            secondFibonacciNumber = result;
-            return result;
+            secondFibonacciNumber = next;
+            return next;
         }
 
         public static Stream<Integer> finiteStream(final Predicate<Integer> predicate, int firstFibonacciNumber, int secondFibonacciNumber) {
@@ -108,6 +112,5 @@ public class ProblemTwo {
             );
 
         }
-
     }
 }

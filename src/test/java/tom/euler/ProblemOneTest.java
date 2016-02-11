@@ -11,40 +11,40 @@ public class ProblemOneTest {
     public void example() {
         final int expected = 23;
 
-        int exampleAnswer = ProblemOne.sumOfMultiplesUpToMax(9, 3, 5);
-        assertEquals(exampleAnswer, expected);
+        int actual = ProblemOne.sumOfMultiplesUpToMax(9, 3, 5);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void solveProblem() {
         final int expected = PROBLEM_ONE.getAnswer();
 
-        int answer = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5);
-        assertEquals(answer, expected);
+        int actual = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void solveProblemUsingFunctional() {
         final int expected = PROBLEM_ONE.getAnswer();
 
-        int answer = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(999, 3, 5);
-        assertEquals(answer, expected);
+        int actual = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(999, 3, 5);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void solveDifferentSetOfMultiples() {
         final int expected = 299496;
 
-        int answer = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5, 4);
-        assertEquals(answer, expected);
+        int actual = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5, 4);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void sumToZeroWhenMaxIsOneAndMultipleIsGreaterThanOne() {
         final int expected = 1;
 
-        int answer = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(1, 1);
-        assertEquals(answer, expected);
+        int actual = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(1, 1);
+        assertEquals(expected, actual);
     }
 
     @Test

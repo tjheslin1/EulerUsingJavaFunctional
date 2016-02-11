@@ -1,6 +1,5 @@
 package tom.euler;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,32 +13,31 @@ public class ProblemTwoTest {
     public void example() {
         final int expected = 231;
 
-        int exampleAnswer = ProblemTwo.example();
-        assertEquals(exampleAnswer, expected);
+        int actual = ProblemTwo.example();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void solveProblem() {
         final int expected = PROBLEM_TWO.getAnswer();
-        int answer = ProblemTwo.sumOfEvenFibonacciValues(FOUR_MILLION, 1, 2);
+        int actual = ProblemTwo.sumOfEvenFibonacciValues(FOUR_MILLION, 1, 2);
 
-        assertEquals(answer, expected);
+        assertEquals(expected, actual);
     }
 
-    @Ignore("To fix")
     @Test
     public void solveProblemUsingFunctional() {
         final int expected = PROBLEM_TWO.getAnswer();
-        int answer = ProblemTwo.sumOfEvenFibonacciValuesFunctional(FOUR_MILLION, 1, 2);
+        int actual = ProblemTwo.sumOfEvenFibonacciValuesFunctional(FOUR_MILLION, 1, 2);
 
-        assertEquals(answer, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void notCalculateAboveMax() {
         final int expected = 0;
 
-        int answer = ProblemTwo.sumOfEvenFibonacciValues(1, 3, 5);
-        assertEquals(expected, answer);
+        int actual = ProblemTwo.sumOfEvenFibonacciValues(1, 3, 5);
+        assertEquals(expected, actual);
     }
 }
