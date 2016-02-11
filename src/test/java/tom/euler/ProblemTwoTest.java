@@ -10,7 +10,7 @@ public class ProblemTwoTest {
     private static final int FOUR_MILLION = 4_000_000;
 
     @Test
-    public void example() {
+    public void solveExample() {
         final int expected = 231;
 
         int actual = ProblemTwo.example();

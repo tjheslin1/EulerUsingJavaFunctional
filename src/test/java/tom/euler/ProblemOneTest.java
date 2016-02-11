@@ -8,7 +8,7 @@ import static tom.euler.Answers.PROBLEM_ONE;
 public class ProblemOneTest {
 
     @Test
-    public void example() {
+    public void solveExample() {
         final int expected = 23;
 
         int actual = ProblemOne.sumOfMultiplesUpToMax(9, 3, 5);
