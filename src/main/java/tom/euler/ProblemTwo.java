@@ -2,7 +2,13 @@ package tom.euler;
 
 import tom.util.IntReference;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import static java.util.Arrays.asList;
 
@@ -25,12 +31,8 @@ public class ProblemTwo {
         return sum.integer;
     }
 
-    public static int sumOfEvenFibonacciValuesFunctional(int max, IntReference sum) {
-        // Function<Integer, Integer> answer =
-        // i -> (IntStream.range(1, i+1)).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
-
-//        Function<Integer, Integer> answer = i -> (IntStream.range(1, i+1)).filter(ProblemTwo::isEven).map(addToSum(sum, );)
-        return -2;
+    public static int sumOfEvenFibonacciValuesFunctional(int max, int firstFibonacciNumber, int secondFibonacciNumber) {
+        return FibonacciGenerator.finiteStream(i -> (i <= max), firstFibonacciNumber, secondFibonacciNumber).filter(ProblemTwo::isEven).mapToInt(i -> i).sum();
     }
 
     private static int sumOfValues(List<Integer> sequence) {
@@ -72,5 +74,40 @@ public class ProblemTwo {
 
     private static int nextFibonacciNumber(int nMinusTwo, int nMinusOne) {
         return nMinusTwo + nMinusOne;
+    }
+
+    private static class FibonacciGenerator implements Iterator<Integer> {
+
+        private final Predicate<Integer> predicate;
+
+        private int firstFibonacciNumber;
+        private int secondFibonacciNumber;
+
+        protected FibonacciGenerator(Predicate<Integer> predicate, int firstFibonacciNumber, int secondFibonacciNumber) {
+            this.predicate = predicate;
+            this.firstFibonacciNumber = firstFibonacciNumber;
+            this.secondFibonacciNumber = secondFibonacciNumber;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return predicate.test(secondFibonacciNumber);
+        }
+
+        @Override
+        public Integer next() {
+            int result = firstFibonacciNumber + secondFibonacciNumber;
+            firstFibonacciNumber = secondFibonacciNumber;
+            secondFibonacciNumber = result;
+            return result;
+        }
+
+        public static Stream<Integer> finiteStream(final Predicate<Integer> predicate, int firstFibonacciNumber, int secondFibonacciNumber) {
+            return StreamSupport.stream(
+                    Spliterators.spliteratorUnknownSize(new FibonacciGenerator(predicate, firstFibonacciNumber, secondFibonacciNumber), Spliterator.ORDERED), false
+            );
+
+        }
+
     }
 }

@@ -4,7 +4,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static tom.euler.Answers.PROBLEM_TWO;
 
 public class ProblemTwoTest {
@@ -27,10 +26,13 @@ public class ProblemTwoTest {
         assertEquals(answer, expected);
     }
 
-    @Ignore("solveProblemUsingFunctional to be implemented")
+    @Ignore("To fix")
     @Test
     public void solveProblemUsingFunctional() {
-        fail();
+        final int expected = PROBLEM_TWO.getAnswer();
+        int answer = ProblemTwo.sumOfEvenFibonacciValuesFunctional(FOUR_MILLION, 1, 2);
+
+        assertEquals(answer, expected);
     }
 
     @Test
