@@ -1,4 +1,4 @@
-package tom.euler;
+package tom.euler.problemsOneToTen;
 
 import tom.util.IntReference;
 

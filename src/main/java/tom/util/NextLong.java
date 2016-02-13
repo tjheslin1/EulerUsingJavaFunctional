@@ -1,4 +1,4 @@
-package tom.euler;
+package tom.util;
 
 public class NextLong {
 
@@ -13,11 +13,20 @@ public class NextLong {
     }
 
     public boolean isAFactorOf(long valueInQuestion) {
-        return true;
+        return (valueInQuestion % next) == 0;
     }
 
     public boolean isAPrime() {
-        return true;
+        if (next == 1) {
+            // https://primes.utm.edu/notes/faq/one.html
+            return false;
+        }
 
+        for (int i = 2; i < next; i++) {
+            if (next % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
