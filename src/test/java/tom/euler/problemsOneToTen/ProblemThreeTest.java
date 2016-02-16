@@ -1,6 +1,5 @@
 package tom.euler.problemsOneToTen;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -24,12 +23,11 @@ public class ProblemThreeTest {
         assertEquals(expected, actual);
     }
 
-    @Ignore
     @Test
     public void solveProblemUsingFunctional() {
         final long expected = PROBLEM_THREE.getAnswer();
 
-        long actual = ProblemThree.largestPrimeFactorOf(600851475143L);
+        long actual = ProblemThree.largestPrimeFactorOfUsingFunctional(600851475143L);
         assertEquals(expected, actual);
     }
 

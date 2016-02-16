@@ -32,7 +32,7 @@ public class ProblemOneTest {
     }
 
     @Test
-    public void solveDifferentSetOfMultiples() {
+    public void solveForDifferentSetOfMultiples() {
         final int expected = 299496;
 
         int actual = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5, 4);
@@ -40,7 +40,7 @@ public class ProblemOneTest {
     }
 
     @Test
-    public void sumToZeroWhenMaxIsOneAndMultipleIsGreaterThanOne() {
+    public void solveWhenMultipleIsGreaterThanMax() {
         final int expected = 1;
 
         int actual = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(1, 1);
