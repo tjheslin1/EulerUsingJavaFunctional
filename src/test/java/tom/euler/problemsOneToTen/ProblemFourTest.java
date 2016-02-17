@@ -3,6 +3,7 @@ package tom.euler.problemsOneToTen;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static tom.euler.Answers.PROBLEM_FOUR;
 
 public class ProblemFourTest {
 
@@ -11,6 +12,25 @@ public class ProblemFourTest {
         final int numOfDigits = 2;
         final int expected = 9009;
 
-        assertEquals(ProblemFour.largestPalindromeOfTwoXDigitNumbers(numOfDigits), expected);
+        int actual = ProblemFour.largestPalindromeOfAnyTwoNumbersOfLength(numOfDigits);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void solveProblem() {
+        final int numOfDigits = 3;
+        final int expected = PROBLEM_FOUR.getAnswer();
+
+        int actual = ProblemFour.largestPalindromeOfAnyTwoNumbersOfLength(numOfDigits);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSolveForSingleDigitLength() {
+        final int numOfDigits = 1;
+        final int expected = 9;
+
+        int actual = ProblemFour.largestPalindromeOfAnyTwoNumbersOfLength(numOfDigits);
+        assertEquals(expected, actual);
     }
 }
