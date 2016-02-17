@@ -7,10 +7,10 @@ public class ProblemFour {
 
     public static int largestPalindromeOfAnyTwoNumbersOfLength(int allowedDigitLength) {
         int highest = 0;
-        final int end = powerOfTen(allowedDigitLength);
+        final int end = maxValueOfAllowedDigitLength(allowedDigitLength);
 
-        for (int first = powerOfTen(allowedDigitLength-1); first < end; first++) {
-            for(int second = powerOfTen(allowedDigitLength-1); second < first; second++) {
+        for (int first = minValueOfAllowedDigitLength(allowedDigitLength); first <= end; first++) {
+            for (int second = minValueOfAllowedDigitLength(allowedDigitLength); second < first; second++) {
                 if (isPalindrome(productAsString(first, second))) {
                     if ((first * second) > highest) {
                         highest = first * second;
@@ -22,12 +22,22 @@ public class ProblemFour {
         return highest;
     }
 
-    private static String productAsString(int first, int second) {
-        return Integer.toString(first * second);
+    public static int largestPalindromeOfAnyTwoNumbersOfLengthUsingFunctional(int allowedDigitLength) {
+        int first = minValueOfAllowedDigitLength(allowedDigitLength);
+        int second = minValueOfAllowedDigitLength(allowedDigitLength);
+
+        int end = maxValueOfAllowedDigitLength(allowedDigitLength);
+//        IntStream.range(first[0], end).filter(i -> isPalindrome(productAsString(i, first[1])));
+//        IntStream.iterate(first, i -> i+1)
+          return -1;
     }
 
-    private static boolean isPalindrome(String value) {
-        return value.equals(new StringBuilder(value).reverse().toString());
+    private static int maxValueOfAllowedDigitLength(int allowedDigitLength) {
+        return powerOfTen(allowedDigitLength) - 1;
+    }
+
+    private static int minValueOfAllowedDigitLength(int allowedDigitLength) {
+        return powerOfTen(allowedDigitLength - 1);
     }
 
     private static int powerOfTen(int allowedDigitLength) {
@@ -35,6 +45,14 @@ public class ProblemFour {
     }
 
     private static int powerOf(int value, int powerToRaise) {
-        return (int)Math.pow(value, powerToRaise);
+        return (int) Math.pow(value, powerToRaise);
+    }
+
+    private static boolean isPalindrome(String value) {
+        return value.equals(new StringBuilder(value).reverse().toString());
+    }
+
+    private static String productAsString(int first, int second) {
+        return Integer.toString(first * second);
     }
 }
