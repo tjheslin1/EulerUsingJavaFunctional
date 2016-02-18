@@ -27,9 +27,8 @@ public class ProblemFour {
         int second = minValueOfAllowedDigitLength(allowedDigitLength);
 
         int end = maxValueOfAllowedDigitLength(allowedDigitLength);
-//        IntStream.range(first[0], end).filter(i -> isPalindrome(productAsString(i, first[1])));
-//        IntStream.iterate(first, i -> i+1)
-          return -1;
+//        return IntStream.iterate(first, i -> i + 1).limit(end).forEach(frst -> IntStream.iterate(second, k -> k + 1).limit(frst).filter(scnd -> isPalindrome(productAsString(frst, scnd)))).max().getAsInt();
+        return -1;
     }
 
     private static int maxValueOfAllowedDigitLength(int allowedDigitLength) {

@@ -1,6 +1,5 @@
 package tom.euler.problemsOneToTen;
 
-import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import static java.util.Arrays.stream;
@@ -22,8 +21,7 @@ public class ProblemOne {
     }
 
     public static int sumOfMultiplesUpToMaxUsingFunctional(int max, int... multiples) {
-        Function<Integer, Integer> answer = maxValue -> (IntStream.range(1, inclusive(maxValue))).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
-        return answer.apply(max);
+        return IntStream.rangeClosed(1, max).filter(n -> valueIsAMultipleFunctional(n, multiples)).sum();
     }
 
     private static boolean valueIsAMultiple(int value, int... multiples) {
@@ -38,9 +36,5 @@ public class ProblemOne {
 
     private static boolean valueIsAMultipleFunctional(int value, int... multiples) {
         return stream(multiples).anyMatch(multiple -> value % multiple == 0);
-    }
-
-    private static int inclusive(int value) {
-        return value + 1;
     }
 }
