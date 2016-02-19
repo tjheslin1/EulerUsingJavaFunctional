@@ -1,5 +1,7 @@
 package tom.euler.problemsOneToTen;
 
+import java.util.stream.IntStream;
+
 public class ProblemFour {
 
     private ProblemFour() {
@@ -9,6 +11,7 @@ public class ProblemFour {
         int highest = 0;
         final int end = maxValueOfAllowedDigitLength(allowedDigitLength);
 
+        // TODO reverse
         for (int first = minValueOfAllowedDigitLength(allowedDigitLength); first <= end; first++) {
             for (int second = minValueOfAllowedDigitLength(allowedDigitLength); second < first; second++) {
                 if (isPalindrome(productAsString(first, second))) {
@@ -22,13 +25,21 @@ public class ProblemFour {
         return highest;
     }
 
-    public static int largestPalindromeOfAnyTwoNumbersOfLengthUsingFunctional(int allowedDigitLength) {
+    public static int largestPalindromeUsingFunctionalOfAnyTwoNumbersOfLength(int allowedDigitLength) {
         int first = minValueOfAllowedDigitLength(allowedDigitLength);
         int second = minValueOfAllowedDigitLength(allowedDigitLength);
 
         int end = maxValueOfAllowedDigitLength(allowedDigitLength);
-//        return IntStream.iterate(first, i -> i + 1).limit(end).forEach(frst -> IntStream.iterate(second, k -> k + 1).limit(frst).filter(scnd -> isPalindrome(productAsString(frst, scnd)))).max().getAsInt();
-        return -1;
+
+//        IntStream.iterate(first, i -> i + 1).limit(end).flatMap(frst -> IntStream.iterate(second, k -> k + 1).limit(frst)
+//                .filter(scnd -> isPalindrome(productAsString(frst, scnd)))).forEach(System.out::println);
+//
+//        return IntStream.iterate(first, i -> i + 1).limit(end).flatMap(frst -> IntStream.iterate(second, k -> k + 1).limit(frst)
+//                .filter(scnd -> isPalindrome(productAsString(frst, scnd)))).max().getAsInt();
+
+        return IntStream.rangeClosed(first, end).flatMap(f -> IntStream.range(first, end).filter(s -> isPalindrome(productAsString(f, s)))).max().getAsInt();
+
+//        return -1;
     }
 
     private static int maxValueOfAllowedDigitLength(int allowedDigitLength) {

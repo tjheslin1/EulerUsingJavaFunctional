@@ -30,7 +30,7 @@ public class ProblemFourTest {
         final int numOfDigits = 3;
         final int expected = PROBLEM_FOUR.getAnswer();
 
-        int actual = ProblemFour.largestPalindromeOfAnyTwoNumbersOfLengthUsingFunctional(numOfDigits);
+        int actual = ProblemFour.largestPalindromeUsingFunctionalOfAnyTwoNumbersOfLength(numOfDigits);
         assertEquals(expected, actual);
     }
 
