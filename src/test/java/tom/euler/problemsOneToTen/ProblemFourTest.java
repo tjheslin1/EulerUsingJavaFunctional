@@ -1,5 +1,6 @@
 package tom.euler.problemsOneToTen;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -25,6 +26,7 @@ public class ProblemFourTest {
         assertEquals(expected, actual);
     }
 
+    @Ignore
     @Test
     public void solveProblemUsingFunctional() {
         final int numOfDigits = 3;

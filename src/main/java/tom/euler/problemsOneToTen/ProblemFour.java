@@ -1,19 +1,17 @@
 package tom.euler.problemsOneToTen;
 
-import java.util.stream.IntStream;
-
 public class ProblemFour {
 
     private ProblemFour() {
     }
 
     public static int largestPalindromeOfAnyTwoNumbersOfLength(int allowedDigitLength) {
-        int highest = 0;
-        final int end = maxValueOfAllowedDigitLength(allowedDigitLength);
+    int highest = 0;
+        int start = minValueOfAllowedDigitLength(allowedDigitLength);
+        final int last = maxValueOfAllowedDigitLength(allowedDigitLength);
 
-        // TODO reverse
-        for (int first = minValueOfAllowedDigitLength(allowedDigitLength); first <= end; first++) {
-            for (int second = minValueOfAllowedDigitLength(allowedDigitLength); second < first; second++) {
+        for (int first = last; first >= start; first--) {
+            for (int second = last; second >= start; second--) {
                 if (isPalindrome(productAsString(first, second))) {
                     if ((first * second) > highest) {
                         highest = first * second;
@@ -27,7 +25,7 @@ public class ProblemFour {
 
     public static int largestPalindromeUsingFunctionalOfAnyTwoNumbersOfLength(int allowedDigitLength) {
         int first = minValueOfAllowedDigitLength(allowedDigitLength);
-        int second = minValueOfAllowedDigitLength(allowedDigitLength);
+//        int second = minValueOfAllowedDigitLength(allowedDigitLength);
 
         int end = maxValueOfAllowedDigitLength(allowedDigitLength);
 
@@ -37,9 +35,10 @@ public class ProblemFour {
 //        return IntStream.iterate(first, i -> i + 1).limit(end).flatMap(frst -> IntStream.iterate(second, k -> k + 1).limit(frst)
 //                .filter(scnd -> isPalindrome(productAsString(frst, scnd)))).max().getAsInt();
 
-        return IntStream.rangeClosed(first, end).flatMap(f -> IntStream.range(first, end).filter(s -> isPalindrome(productAsString(f, s)))).max().getAsInt();
+//        return IntStream.rangeClosed(first, end).flatMap(f -> IntStream.rangeClosed(first, end).filter(s -> isPalindrome(productAsString(f, s)))).max().getAsInt();
+//        return IntStream.rangeClosed(first, end).flatMap(f -> IntStream.rangeClosed(first, end).forEach(s -> s * f))
 
-//        return -1;
+        return -1;
     }
 
     private static int maxValueOfAllowedDigitLength(int allowedDigitLength) {
