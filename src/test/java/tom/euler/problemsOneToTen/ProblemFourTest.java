@@ -1,7 +1,8 @@
 package tom.euler.problemsOneToTen;
 
-import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
 import static tom.euler.Answers.PROBLEM_FOUR;
@@ -26,7 +27,6 @@ public class ProblemFourTest {
         assertEquals(expected, actual);
     }
 
-    @Ignore
     @Test
     public void solveProblemUsingFunctional() {
         final int numOfDigits = 3;
@@ -43,14 +43,19 @@ public class ProblemFourTest {
 
         int actual = ProblemFour.largestPalindromeOfAnyTwoNumbersOfLength(numOfDigits);
         assertEquals(expected, actual);
+
+        int actualUsingFunctional = ProblemFour.largestPalindromeUsingFunctionalOfAnyTwoNumbersOfLength(numOfDigits);
+        assertEquals(expected, actualUsingFunctional);
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void shouldHandleNegativeDigitLength() {
         final int numOfDigits = -1;
         final int expected = 0;
 
         int actual = ProblemFour.largestPalindromeOfAnyTwoNumbersOfLength(numOfDigits);
         assertEquals(expected, actual);
+
+        ProblemFour.largestPalindromeUsingFunctionalOfAnyTwoNumbersOfLength(numOfDigits);
     }
 }

@@ -28,7 +28,7 @@ public class ProblemTwoTest {
     @Test
     public void solveProblemUsingFunctional() {
         final int expected = PROBLEM_TWO.getAnswer();
-        int actual = ProblemTwo.sumOfEvenFibonacciValuesFunctional(FOUR_MILLION, 1, 2);
+        int actual = ProblemTwo.sumOfEvenFibonacciValuesUsingFunctional(FOUR_MILLION, 1, 2);
 
         assertEquals(expected, actual);
     }
@@ -39,5 +39,8 @@ public class ProblemTwoTest {
 
         int actual = ProblemTwo.sumOfEvenFibonacciValues(1, 3, 5);
         assertEquals(expected, actual);
+
+        int actualUsingFunctional = ProblemTwo.sumOfEvenFibonacciValuesUsingFunctional(1, 3, 5);
+        assertEquals(expected, actualUsingFunctional);
     }
 }

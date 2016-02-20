@@ -31,7 +31,7 @@ public class ProblemTwo {
         return sum.integer;
     }
 
-    public static int sumOfEvenFibonacciValuesFunctional(int max, int firstFibonacciNumber, int secondFibonacciNumber) {
+    public static int sumOfEvenFibonacciValuesUsingFunctional(int max, int firstFibonacciNumber, int secondFibonacciNumber) {
         int result = FibonacciGenerator.finiteStream(i -> (i <= max), firstFibonacciNumber, secondFibonacciNumber).filter(ProblemTwo::isEven).mapToInt(i -> i).sum();
 
         result += isEven(firstFibonacciNumber) ? firstFibonacciNumber : 0;

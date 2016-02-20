@@ -37,6 +37,9 @@ public class ProblemThreeTest {
 
         long actual = ProblemThree.largestPrimeFactorOf(8329572398L);
         assertEquals(expected, actual);
+
+        long actualUsingFunctional = ProblemThree.largestPrimeFactorOf(8329572398L);
+        assertEquals(expected, actualUsingFunctional);
     }
 
     @Test
@@ -45,5 +48,8 @@ public class ProblemThreeTest {
 
         long actual = ProblemThree.largestPrimeFactorOf(23459L);
         assertEquals(expected, actual);
+
+        long actualUsingFunctional = ProblemThree.largestPrimeFactorOf(23459L);
+        assertEquals(expected, actualUsingFunctional);
     }
 }

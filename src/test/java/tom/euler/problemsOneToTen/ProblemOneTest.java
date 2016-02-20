@@ -37,14 +37,20 @@ public class ProblemOneTest {
 
         int actual = ProblemOne.sumOfMultiplesUpToMax(999, 3, 5, 4);
         assertEquals(expected, actual);
+
+        int actualUsingFunctional = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(999, 3, 5, 4);
+        assertEquals(expected, actualUsingFunctional);
     }
 
     @Test
     public void solveWhenMultipleIsGreaterThanMax() {
         final int expected = 1;
 
-        int actual = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(1, 1);
+        int actual = ProblemOne.sumOfMultiplesUpToMax(1, 1);
         assertEquals(expected, actual);
+
+        int actualUsingFunctional = ProblemOne.sumOfMultiplesUpToMaxUsingFunctional(1, 1);
+        assertEquals(expected, actualUsingFunctional);
     }
 
     @Test
@@ -53,5 +59,10 @@ public class ProblemOneTest {
         int answerWithDuplicate = ProblemOne.sumOfMultiplesUpToMax(12, 6, 6, 9);
 
         assertEquals(answer, answerWithDuplicate);
+
+        int answerUsingFunctional = ProblemOne.sumOfMultiplesUpToMax(12, 6, 9);
+        int answerWithDuplicateUsingFunctional = ProblemOne.sumOfMultiplesUpToMax(12, 6, 6, 9);
+
+        assertEquals(answerUsingFunctional, answerWithDuplicateUsingFunctional);
     }
 }
