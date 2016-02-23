@@ -9,12 +9,12 @@ public class ProblemFour {
     }
 
     public static int largestPalindromeOfAnyTwoNumbersOfLength(int allowedDigitLength) {
-    int highest = 0;
-        int start = minValueOfAllowedDigitLength(allowedDigitLength);
-        final int last = maxValueOfAllowedDigitLength(allowedDigitLength);
+        int highest = 0;
+        int lowestAllowedValue = minValueOfAllowedDigitLength(allowedDigitLength);
+        final int highestAllowedValue = maxValueOfAllowedDigitLength(allowedDigitLength);
 
-        for (int first = last; first >= start; first--) {
-            for (int second = last; second >= first; second--) {
+        for (int first = highestAllowedValue; first >= lowestAllowedValue; first--) {
+            for (int second = highestAllowedValue; second >= first; second--) {
                 if (isPalindrome(productAsString(first, second))) {
                     if ((first * second) > highest) {
                         highest = first * second;
