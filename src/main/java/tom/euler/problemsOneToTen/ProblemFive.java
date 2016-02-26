@@ -9,7 +9,7 @@ public class ProblemFive {
 
     public static int smallestPositiveNumberEvenlyDivisibleByAllNumbersUpTo(int largestNumberDivisibleBy) {
         int next = largestNumberDivisibleBy;
-        while (!isEvenylDivisibleByAll(next, largestNumberDivisibleBy)) {
+        while (!isEvenlyDivisibleByAll(next, largestNumberDivisibleBy)) {
             next++;
         }
 
@@ -17,12 +17,11 @@ public class ProblemFive {
     }
 
     public static int smallestPositiveNumberEvenlyDivisibleByAllNumbersUsingFunctionalUpTo(int largestNumberDivisibleBy) {
-        int next = largestNumberDivisibleBy;
-//        return IntStream.iterate(0, i -> i + 1).findFirst(isEvenylDivisibleByAll(next, largestNumberDivisibleBy)).findFirst().getAsInt();
-        return -1;
+        IntStream streamOfValidValues = IntStream.iterate(largestNumberDivisibleBy, i -> i + 1).filter(x -> isEvenlyDivisibleByAllUsingFunctional(x, largestNumberDivisibleBy));
+        return streamOfValidValues.findFirst().getAsInt();
     }
 
-    private static boolean isEvenylDivisibleByAll(int value, int largestNumberDivisibleBy) {
+    private static boolean isEvenlyDivisibleByAll(int value, int largestNumberDivisibleBy) {
         for (int divisor = 1; divisor <= largestNumberDivisibleBy; divisor++) {
             if (!isEvenlyDivisible(value, divisor)) {
                 return false;
@@ -30,6 +29,10 @@ public class ProblemFive {
         }
 
         return true;
+    }
+
+    private static boolean isEvenlyDivisibleByAllUsingFunctional(int value, int largestNumberDivisibleBy) {
+        return IntStream.rangeClosed(1, largestNumberDivisibleBy).allMatch(i -> isEvenlyDivisible(value, i));
     }
 
     private static boolean isEvenlyDivisible(int value, int divisor) {

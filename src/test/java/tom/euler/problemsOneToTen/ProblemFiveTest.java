@@ -2,6 +2,9 @@ package tom.euler.problemsOneToTen;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.rules.Stopwatch;
+
+import java.util.Timer;
 
 import static org.junit.Assert.assertEquals;
 import static tom.euler.Answers.PROBLEM_FIVE;
@@ -24,7 +27,6 @@ public class ProblemFiveTest {
         assertEquals(expected, actual);
     }
 
-    @Ignore
     @Test
     public void solveProblemUsingFunctional() {
         final int expected = PROBLEM_FIVE.getAnswer();
