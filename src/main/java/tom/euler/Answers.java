@@ -6,7 +6,8 @@ public enum Answers {
     PROBLEM_TWO(4613732),
     PROBLEM_THREE(6857),
     PROBLEM_FOUR(906609),
-    PROBLEM_FIVE(232792560);
+    PROBLEM_FIVE(232792560),
+    PROBLEM_SIX(25164150);
 
     private final int answerToProblem;
 
